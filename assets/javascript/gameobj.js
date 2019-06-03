@@ -1,60 +1,18 @@
 
-// var wins = 0;
-// var board = "";
-// var guesses_left = 9;
-// var guesses = "";
-// var game_words = ["jamaica", "marley", "ganja", "jah", "skankin"];
-// var game_won = false;
-// var game_word_index = 0;
-// var num_guesses = 9;
+var wins = 0;
+var board = "";
+var guesses_left = 9;
+var guesses = "";
+var game_words = ["jamaica", "marley", "ganja", "jah", "skankin"];
+var game_won = false;
+var game_word_index = 0;
+var num_guesses = 9;
 
 var wins_display = document.getElementById("wins");
 var board_display = document.getElementById("board");
 var guesses_left_display = document.getElementById("guesses_left");
 var guesses_display = document.getElementById("guesses");
 var game_word_display = document.getElementById("game_word");
-
-var wgame = {
-  wins: 0,
-  board: "",
-  guesses_left: 9,
-  guesses: "",
-  game_words: ["jamaica", "marley", "ganja", "jah", "skankin"],
-  game_won: false,
-  game_word_index: 0,
-  num_guesses: 9,
-
-  update_display: function()
-  {
-    wins_display.textContent = this.wins;
-    board_display.textContent = this.board;
-    guesses_left_display.textContent = this.guesses_left;
-    guesses_display.textContent = this.guesses;
-  },
-
-  increment_game_word_index: function()
-  {
-    if (this.game_word_index === this.game_words.length - 1)
-      this.game_word_index = 0;
-    else
-      this.game_word_index++;
-  }
-    
-    function reset_game()
-    {
-      board = "";
-      for (var i = 0; i < game_words[game_word_index].length; i++)
-        board = board + "_";
-    
-      guesses_left = num_guesses;
-      guesses = "";
-    }
-  }
-};
-
-
-}
-
 
 function update_display()
 {
@@ -103,15 +61,8 @@ function array_to_string(arr)
   return(arr.join(""));
 }
 
-reset_game();
+set_game();
 update_display();
-
-// onKeyUp: function(guess){
-// }
-
-// document.onkeyup = function(event){
-//   myObj.onKeyUp(event.key)
-// }
 
 document.onkeyup = function(event) 
 {
@@ -140,14 +91,14 @@ document.onkeyup = function(event)
     game_word_display.textContent = game_words[game_word_index] + " You won!"; // display winning word
 
     increment_game_word_index();
-    reset_game();
+    set_game();
     
   }
   else if (--guesses_left === 0)    // a loss
   {
     game_word_display.textContent = game_words[game_word_index] + " You lost!"; // display losing word
     increment_game_word_index();
-    reset_game();
+    set_game();
 
   }
   else                               //another guess
