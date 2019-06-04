@@ -1,4 +1,7 @@
 
+
+// non-object version js
+
 var wins = 0;
 var board = "";
 var guesses_left = 9;
@@ -88,7 +91,7 @@ document.onkeyup = function(event)
   if (board === game_words[game_word_index]) //a win
   {
     wins++;
-    game_word_display.textContent = game_words[game_word_index] + " You won!"; // display winning word
+    game_word_display.textContent = game_words[game_word_index] + " - You won!"; // display winning word
 
     increment_game_word_index();
     set_game();
@@ -96,7 +99,7 @@ document.onkeyup = function(event)
   }
   else if (--guesses_left === 0)    // a loss
   {
-    game_word_display.textContent = game_words[game_word_index] + " You lost!"; // display losing word
+    game_word_display.textContent = game_words[game_word_index] + " - You lost!"; // display losing word
     increment_game_word_index();
     set_game();
 
